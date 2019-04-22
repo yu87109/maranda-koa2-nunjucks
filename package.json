@@ -1,5 +1,5 @@
 {
-  "name": "@maradna/koa2-nunjucks",
+  "name": "@maranda/koa2-nunjucks",
   "version": "1.0.0",
   "description": "koa2 nunjucks typescript",
   "main": "index.ts",
