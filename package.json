@@ -1,0 +1,22 @@
+{
+  "name": "@maradna/koa2-nunjucks",
+  "version": "1.0.0",
+  "description": "koa2 nunjucks typescript",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "koa2",
+    "nunjucks",
+    "typescript",
+    "maranda"
+  ],
+  "author": "Sunny",
+  "license": "ISC",
+  "dependencies": {
+    "@types/koa": "^2.0.48",
+    "@types/nunjucks": "^3.1.1",
+    "nunjucks": "^3.2.0"
+  }
+}
