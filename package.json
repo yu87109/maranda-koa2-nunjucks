@@ -14,6 +14,7 @@
   ],
   "author": "Sunny",
   "license": "ISC",
+  "private":  false,
   "repository": {
     "type": "git",
     "url": "https://gitee.com/sunny8792/koa2-nunjucks.git"
