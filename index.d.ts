@@ -3,6 +3,7 @@ import Koa from 'koa';
 
 export interface CtxRender{
     render: (this:Koa<any,CtxRender>, ViewName:string, RenderData:{}) => void;
+    [key:string]:any
 }
 export function Koa2Nunjucks(ViewPath:string, app:Koa<any, CtxRender>, EnvOptions?: EnvOptions):Koa<any, CtxRender>
 /**  
