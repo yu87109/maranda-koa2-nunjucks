@@ -3,6 +3,7 @@ import Koa from 'koa';
 
 interface CtxRender{
     render: (this:Koa<any,CtxRender>, ViewName:string, RenderData:{}) => void;
+    [key:string]:any
 }
 function Koa2Nunjucks(ViewPath:string, app:Koa<any, CtxRender>, EnvOptions?: ConfigureOptions){
     const FileLoader = new FileSystemLoader(ViewPath);
