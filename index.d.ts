@@ -1,9 +1,10 @@
-import {ConfigureOptions} from 'nunjucks';
+import {ConfigureOptions as EnvOptions} from 'nunjucks';
 import Koa from 'koa';
 
 export interface CtxRender{
     render: (this:Koa<any,CtxRender>, ViewName:string, RenderData:{}) => void;
 }
+export function Koa2Nunjucks(ViewPath:string, app:Koa<any, CtxRender>, EnvOptions?: EnvOptions):Koa<any, CtxRender>
 /**  
  * EnvOptions 
  * autoescape (默认值: true) 控制输出是否被转义，查看 Autoescaping
@@ -18,4 +19,4 @@ export interface CtxRender{
  * express 传入 express 实例初始化模板设置
  * tags: (默认值: see nunjucks syntax) 定义模板语法，查看 Customizing Syntax 
  */
-export function Koa2Nunjucks(ViewPath:string, app:Koa<any, CtxRender>, EnvOptions?: ConfigureOptions):Koa<any, CtxRender>
+export {EnvOptions}

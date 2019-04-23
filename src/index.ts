@@ -4,7 +4,7 @@ import Koa from 'koa';
 interface CtxRender{
     render: (this:Koa<any,CtxRender>, ViewName:string, RenderData:{}) => void;
 }
-export function Koa2Nunjucks(ViewPath:string, app:Koa<any, CtxRender>, EnvOptions?: ConfigureOptions){
+function Koa2Nunjucks(ViewPath:string, app:Koa<any, CtxRender>, EnvOptions?: ConfigureOptions){
     const FileLoader = new FileSystemLoader(ViewPath);
     const Env = new Environment(FileLoader, Object.assign({
         autoescape: false,
@@ -20,3 +20,4 @@ export function Koa2Nunjucks(ViewPath:string, app:Koa<any, CtxRender>, EnvOption
     }
     return app;
 }
+export default Koa2Nunjucks;
