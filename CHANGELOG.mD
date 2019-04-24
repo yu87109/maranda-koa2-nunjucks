@@ -9,3 +9,5 @@
     2. change Koa2Nunjucks function into generics
   ## V1.0.4
     1. modify interface CtxRender change 'this' of render
+  ## V1.0.5
+    1. change repository to github

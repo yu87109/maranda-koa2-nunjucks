@@ -1,6 +1,6 @@
 {
   "name": "maranda-koa2-nunjucks",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "koa2 nunjucks typescript",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   "private": false,
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/sunny8792/koa2-nunjucks.git"
+    "url": "https://github.com/yu87109/maranda-koa2-nunjucks.git"
   },
   "dependencies": {
     "@types/koa": "^2.0.48",
