@@ -7,3 +7,5 @@
   ## V1.0.3
     1. change export
     2. change Koa2Nunjucks function into generics
+  ## V1.0.4
+    1. modify interface CtxRender change 'this' of render

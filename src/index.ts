@@ -1,8 +1,8 @@
 import {Environment, FileSystemLoader, ConfigureOptions} from 'nunjucks';
-import Koa from 'koa';
+import Koa,{ParameterizedContext} from 'koa';
 
 interface CtxRender{
-    render: (this:Koa<any,CtxRender>, ViewName:string, RenderData:{}) => void;
+    render: (this:ParameterizedContext, ViewName:string, RenderData:{}) => void;
 }
 function Koa2Nunjucks<T extends CtxRender>(ViewPath:string, app:Koa<any,T>, EnvOptions?: ConfigureOptions){
     const FileLoader = new FileSystemLoader(ViewPath);
@@ -14,7 +14,7 @@ function Koa2Nunjucks<T extends CtxRender>(ViewPath:string, app:Koa<any,T>, EnvO
         watch: true,
         noCache: true,
     }, EnvOptions));
-    app.context.render = function(this:Koa<any,CtxRender>, ViewName:string, RenderData:{}){
+    app.context.render = function(this:ParameterizedContext, ViewName:string, RenderData:{}){
         this.response.body = Env.render(ViewName, RenderData);
         this.response.type = 'text/html';
     }

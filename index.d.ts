@@ -1,8 +1,8 @@
 import {ConfigureOptions as EnvOptions} from 'nunjucks';
-import Koa from 'koa';
+import Koa,{ParameterizedContext} from 'koa';
 
-declare interface CtxRender{
-    render: (this:Koa<any,CtxRender>, ViewName:string, RenderData:{}) => void;
+interface CtxRender{
+    render: (this:ParameterizedContext, ViewName:string, RenderData:{}) => void;
 }
 declare function Koa2Nunjucks<T extends CtxRender>(ViewPath:string, app:Koa<any, T>, EnvOptions?: EnvOptions):void
 /**  
