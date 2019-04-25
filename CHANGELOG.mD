@@ -11,3 +11,5 @@
     1. modify interface CtxRender change 'this' of render
   ## V1.0.5
     1. change repository to github
+  ## V1.0.6
+    2. assgin ctx.state into the RenderData 

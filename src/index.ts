@@ -15,7 +15,7 @@ function Koa2Nunjucks<T extends CtxRender>(ViewPath:string, app:Koa<any,T>, EnvO
         noCache: true,
     }, EnvOptions));
     app.context.render = function(this:ParameterizedContext, ViewName:string, RenderData:{}){
-        this.response.body = Env.render(ViewName, RenderData);
+        this.response.body = Env.render(ViewName, Object.assign({}, this.state, RenderData));
         this.response.type = 'text/html';
     }
 }

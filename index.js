@@ -12,7 +12,7 @@ function Koa2Nunjucks(ViewPath, app, EnvOptions) {
         noCache: true,
     }, EnvOptions));
     app.context.render = function (ViewName, RenderData) {
-        this.response.body = Env.render(ViewName, RenderData);
+        this.response.body = Env.render(ViewName, Object.assign({}, this.state, RenderData));
         this.response.type = 'text/html';
     };
 }
