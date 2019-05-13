@@ -1,10 +1,16 @@
-import {ConfigureOptions as EnvOptions} from 'nunjucks';
-import Koa,{ParameterizedContext} from 'koa';
+import {ConfigureOptions} from 'nunjucks';
+import Koa from 'koa';
 
-interface CtxRender{
-    render: (this:ParameterizedContext, ViewName:string, RenderData:{}) => void;
+declare class NunjucksKoa<StateT, CustomT> extends Koa<StateT, CustomT & NunjucksKoa.Ctx>{
+    constructor();
+    constructor(ViewPath?:string|string[], EnvOptions?: ConfigureOptions)
 }
-declare function Koa2Nunjucks<T extends CtxRender>(ViewPath:string, app:Koa<any, T>, EnvOptions?: EnvOptions):void
+declare namespace NunjucksKoa{
+    export interface Ctx{
+        render: (this:Koa.ParameterizedContext, ViewName:string, RenderData?:{})=>void;
+    }
+    export function Init<StateT, CustomT, T extends Koa<StateT, CustomT & NunjucksKoa.Ctx>>(this: T, ViewPath:string|string[], EnvOptions?: ConfigureOptions): void;
+}
 /**  
  * EnvOptions 
  * autoescape (默认值: true) 控制输出是否被转义，查看 Autoescaping
@@ -19,4 +25,5 @@ declare function Koa2Nunjucks<T extends CtxRender>(ViewPath:string, app:Koa<any,
  * express 传入 express 实例初始化模板设置
  * tags: (默认值: see nunjucks syntax) 定义模板语法，查看 Customizing Syntax 
  */
-export {CtxRender, Koa2Nunjucks}
+export * from 'nunjucks'
+export {Koa, NunjucksKoa}

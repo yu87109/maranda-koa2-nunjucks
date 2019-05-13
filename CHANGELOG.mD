@@ -3,13 +3,19 @@
     2. add build script
     3. change package.json 
   ## V1.0.2
-    1. modify index.d.ts add '[key:string]:any' into 'interface CtxRender'
+     modify index.d.ts add '[key:string]:any' into 'interface CtxRender'
   ## V1.0.3
     1. change export
     2. change Koa2Nunjucks function into generics
   ## V1.0.4
-    1. modify interface CtxRender change 'this' of render
+    modify interface CtxRender change 'this' of render
   ## V1.0.5
-    1. change repository to github
+    change repository to github
   ## V1.0.6
-    2. assgin ctx.state into the RenderData 
+    assgin ctx.state into the RenderData 
+  ## V1.0.7
+    redisign the apis,
+    api---NunjucksKoa  a class extends koa, with this , you can init env by new
+    api---Koa the original api of koa2
+    api---Nunjucks.Init a function, with it you can init the env after you have already create koa-server app
+    api---Nunjucks.Ctx a interface, with it you can custom defined your ctx of middleware

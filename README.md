@@ -4,11 +4,29 @@ npm i --save maranda-koa2-nunjucks
 
 app.ts
 ```
-import {CtxRender, Koa2Nunjucks} from 'maranda-koa2-nunjucks';
-import Koa from 'koa';
+import {NunjucksKoa, Koa} from 'maranda-koa2-nunjucks';
 
-const app = new Koa<any, others&CtxRender>();//if have other context
-Koa2Nunjucks(ViewPath, app, {...});
+//type1
+const app = new NunjucksKoa([
+    join(__dirname, '../view1'), join(__dirname, '../view2')
+],{
+    noCache: true
+});
+//type2
+const app = new Koa();
+NunjucksKoa.Init.call(app, [
+    join(__dirname, '../view1'), join(__dirname, '../view2')
+],{
+    noCache: true
+})
+//type3
+const app = new NunjucksKoa()
+NunjucksKoa.Init.call(app, [
+    join(__dirname, '../view1'), join(__dirname, '../view2')
+],{
+    noCache: true
+})
+
 
 app.use(async (ctx, next)=>{
     ctx.render(ViewName, RenderData)
