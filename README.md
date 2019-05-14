@@ -3,12 +3,14 @@
 npm i --save maranda-koa2-nunjucks
 
 // for the complete maranda koa server case, with static, session-mysql, koabody, router 
+
 // please visit https://github.com/yu87109/maranda-koa-server-example
 
 
 //this example is used for ts, if you are js user, if can use as almost the same, just delete the type define.
+
 app.ts
-```
+```javascript
 import {NunjucksKoa, Koa} from 'maranda-koa2-nunjucks';
 
 //type1
@@ -39,6 +41,6 @@ app.use(async (ctx, next)=>{
 app.listen(80);
 ```
 
-[========]
-Versions:
-![text](./CHANGELOG.md)
+---
+
+[for more Versions, click see the changelog](./CHANGELOG.md)
