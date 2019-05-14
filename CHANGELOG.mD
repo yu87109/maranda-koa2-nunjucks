@@ -19,3 +19,5 @@
     api---Koa the original api of koa2
     api---Nunjucks.Init a function, with it you can init the env after you have already create koa-server app
     api---Nunjucks.Ctx a interface, with it you can custom defined your ctx of middleware
+  ## V1.0.8
+    modify readme, add the complete maranda koa server case, with static, session-mysql, koabody, router 

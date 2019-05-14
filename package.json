@@ -1,12 +1,13 @@
 {
   "name": "maranda-koa2-nunjucks",
-  "version": "1.0.7",
-  "description": "koa2 nunjucks typescript",
+  "version": "1.0.8",
+  "description": "maranda koa2 nunjucks typescript",
   "main": "index.js",
   "scripts": {
     "build": "tsc"
   },
   "keywords": [
+    "maranda",
     "koa2",
     "nunjucks",
     "typescript",
