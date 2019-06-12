@@ -11,32 +11,32 @@
 
 app.ts
 ```javascript
-import {NunjucksKoa, Koa} from 'maranda-koa2-nunjucks';
+import {NunjucksKoa, Koa, Nunjucks, NunjucksCtx} from 'maranda-koa2-nunjucks';
+import {join as pathJoin } from 'path';
 
-//type1
-const app = new NunjucksKoa([
-    join(__dirname, '../view1'), join(__dirname, '../view2')
-],{
-    noCache: true
-});
-//type2
-const app = new Koa<any, NunjucksKoa.Ctx>();
-NunjucksKoa.Init.call(app, [
-    join(__dirname, '../view1'), join(__dirname, '../view2')
-],{
-    noCache: true
-})
-//type3
-const app = new NunjucksKoa()
-NunjucksKoa.Init.call(app, [
-    join(__dirname, '../view1'), join(__dirname, '../view2')
-],{
-    noCache: true
-})
-
+interface Ctx extends NunjucksCtx{
+    //if have other context
+}
+const app = new NunjucksKoa<any, Ctx>(
+    [
+        pathJoin(__dirname, '../view1'), 
+        pathJoin(__dirname, '../view2')
+    ],
+    {
+        noCache: true
+    }
+);
+//if you do not want use NunjucksKoa, you use as follows:
+const app = new Koa<any, Ctx>();
+app.context.nunjucks = new Nunjucks.Environment(
+    new Nunjucks.FileSystemLoader(pathJoin(__dirname, '../assets/ssr')),
+    {
+        noCache: true,
+    }
+);
 
 app.use(async (ctx, next)=>{
-    ctx.render(ViewName, RenderData)
+    ctx.nunjucks.render('a.njk', {...})
 }
 app.listen(80);
 ```

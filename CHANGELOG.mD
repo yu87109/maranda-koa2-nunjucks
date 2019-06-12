@@ -23,3 +23,9 @@
     modify readme, add the complete maranda koa server case, with static, session-mysql, koabody, router 
   ## V1.0.9
     modify readme
+  ## V2.0.0
+    redesign the apis;
+    api---NunjucksKoa  a class extends koa, with this , you can init env by new
+    api---Koa the original api of koa2
+    api---Nunjucks the original api of nunjucks
+    api---Nunjucks.Ctx a interface, with extends it you can custom defined your ctx of middleware

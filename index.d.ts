@@ -1,18 +1,15 @@
-import {ConfigureOptions} from 'nunjucks';
+import Nunjucks from 'nunjucks';
 import Koa from 'koa';
 
-declare class NunjucksKoa<StateT, CustomT> extends Koa<StateT, CustomT & NunjucksKoa.Ctx>{
-    constructor();
-    constructor(ViewPath?:string|string[], EnvOptions?: ConfigureOptions)
+export interface NunjucksCtx { nunjucks: Nunjucks.Environment }
+export class NunjucksKoa<StateT, CustomT extends NunjucksCtx> extends Koa<StateT, CustomT>{
+    constructor(viewPaths: string[], viewOptions?: Nunjucks.ConfigureOptions);
 }
-declare namespace NunjucksKoa{
-    export interface Ctx{
-        render: (this:Koa.ParameterizedContext, ViewName:string, RenderData?:{})=>void;
-    }
-    export function Init<StateT, CustomT, T extends Koa<StateT, CustomT & NunjucksKoa.Ctx>>(this: T, ViewPath:string|string[], EnvOptions?: ConfigureOptions): void;
-}
-/**  
- * EnvOptions 
+export { Nunjucks, Koa }
+
+
+/**
+ * viewOptions
  * autoescape (默认值: true) 控制输出是否被转义，查看 Autoescaping
  * throwOnUndefined (default: false) 当输出为 null 或 undefined 会抛出异常
  * trimBlocks (default: false) 自动去除 block/tag 后面的换行符
@@ -23,7 +20,5 @@ declare namespace NunjucksKoa{
  * useCache (default: false) 是否使用缓存，否则会重新请求下载模板
  * async (default: false) 是否使用 ajax 异步下载模板
  * express 传入 express 实例初始化模板设置
- * tags: (默认值: see nunjucks syntax) 定义模板语法，查看 Customizing Syntax 
+ * tags: (默认值: see nunjucks syntax) 定义模板语法，查看 Customizing Syntax
  */
-export * from 'nunjucks'
-export {Koa, NunjucksKoa}
